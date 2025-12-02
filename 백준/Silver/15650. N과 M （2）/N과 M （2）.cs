@@ -20,24 +20,20 @@ namespace algorithm_study
             N = int.Parse(input[0]);
             M = int.Parse(input[1]);
             sequence = new int[M];
-            for (int i = 1; i <= N; i++)
-            {
-                DFS(i, 1);
-            }
-
+            DFS(1, 0);
             return;
         }
 
         public static void DFS(int n, int depth) { 
-            sequence[depth-1] = n;
             if (depth == M)
             {
                 Print();
                 return;
             }
-            for (int i = n + 1; i <= N; i++)
+            for (int i = n; i <= N; i++)
             {
-                DFS(i, depth + 1);
+                sequence[depth] = i;
+                DFS(i + 1, depth + 1);
             }
         }
 
